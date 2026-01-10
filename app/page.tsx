@@ -1,0 +1,445 @@
+import Image from 'next/image';
+import Navbar from '@/components/layout/Navbar';
+import Footer from '@/components/layout/Footer';
+import CTAButton from '@/components/ui/CTAButton';
+import SectionTitle from '@/components/ui/SectionTitle';
+import PromoBadge from '@/components/ui/PromoBadge';
+import FeatureCard from '@/components/ui/FeatureCard';
+import TestimonialCard from '@/components/ui/TestimonialCard';
+import FAQAccordion from '@/components/ui/FAQAccordion';
+import HouseTypeCard from '@/components/ui/HouseTypeCard';
+import MapWithPins from '@/components/ui/MapWithPins';
+import { siteConfig } from '@/data/siteConfig';
+import { houseTypes } from '@/data/houseTypes';
+import { attractions } from '@/data/attractions';
+import { getFeaturedTestimonials } from '@/data/testimonials';
+import { faqs } from '@/data/faqs';
+import Link from 'next/link';
+
+export default function HomePage() {
+  const featuredHouseTypes = houseTypes.slice(0, 3);
+  const featuredTestimonials = getFeaturedTestimonials(3);
+  const displayFaqs = faqs.slice(0, 6);
+
+  return (
+    <>
+      <Navbar />
+      
+      <main className="pt-20">
+        {/* Hero Section */}
+        <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+          {/* Background Image with Overlay */}
+          <div className="absolute inset-0 z-0">
+            <Image
+              src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=1920&h=1080&fit=crop"
+              alt="The Shafa Residence"
+              fill
+              className="object-cover"
+              priority
+            />
+            <div className="absolute inset-0 bg-gradient-to-b from-navy-950/80 via-navy-900/60 to-navy-950/90" />
+          </div>
+          
+          {/* Content */}
+          <div className="container-custom relative z-10 text-center text-white py-20">
+            <PromoBadge 
+              text={siteConfig.promo.badge}
+              variant="discount"
+              size="lg"
+              className="mb-6"
+            />
+            
+            <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 leading-tight">
+              <span className="block text-white mb-2">{siteConfig.name}</span>
+              <span className="block text-gold-400">{siteConfig.tagline}</span>
+            </h1>
+            
+            <p className="text-xl md:text-2xl text-navy-100 mb-8 max-w-3xl mx-auto leading-relaxed">
+              Perumahan premium di Kota Batu dengan view spektakuler Gunung Panderman & Arjuno. 
+              Dekat dengan berbagai destinasi wisata populer.
+            </p>
+            
+            {/* Promo Banner */}
+            <div className="inline-flex flex-col sm:flex-row items-center gap-4 bg-gradient-to-r from-gold-600 to-gold-500 px-8 py-4 rounded-2xl mb-10 shadow-2xl">
+              <svg className="w-12 h-12 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+              <div className="text-left">
+                <p className="text-2xl md:text-3xl font-bold text-white">{siteConfig.promo.headline}</p>
+                <p className="text-sm text-white/90">{siteConfig.promo.validity}</p>
+              </div>
+            </div>
+            
+            <div className="flex items-center justify-center gap-4 bg-red-600 px-6 py-3 rounded-xl mb-10 animate-pulse inline-flex">
+              <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+              <p className="text-white font-bold text-lg">{siteConfig.scarcity.message}</p>
+            </div>
+            
+            {/* CTAs */}
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+              <CTAButton 
+                message="Halo, saya tertarik dengan The Shafa Residence. Bisa minta info promo terbaru?"
+                variant="primary"
+                size="lg"
+              >
+                Hubungi Sekarang
+              </CTAButton>
+              <Link
+                href="/house-types"
+                className="inline-flex items-center gap-2 px-8 py-4 bg-white hover:bg-navy-50 text-navy-950 font-semibold rounded-xl transition-all duration-300 transform hover:scale-105 shadow-lg"
+              >
+                Lihat Tipe Rumah
+                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                </svg>
+              </Link>
+            </div>
+          </div>
+          
+          {/* Scroll Indicator */}
+          <div className="absolute bottom-10 left-1/2 transform -translate-x-1/2 z-10 animate-bounce">
+            <svg className="w-6 h-6 text-gold-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+            </svg>
+          </div>
+        </section>
+        
+        {/* Keunggulan Section */}
+        <section id="keunggulan" className="section-padding bg-navy-50">
+          <div className="container-custom">
+            <SectionTitle
+              badge="Mengapa Memilih Kami?"
+              title="Keunggulan The Shafa Residence"
+              subtitle="Hunian premium dengan lokasi strategis, fasilitas lengkap, dan investasi menguntungkan"
+            />
+            
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mt-16">
+              <FeatureCard
+                icon="🏔️"
+                title="View Gunung Spektakuler"
+                description="Pemandangan langsung Gunung Panderman dan Arjuno dari hunian Anda. Nikmati kesejukan udara pegunungan setiap hari."
+              />
+              <FeatureCard
+                icon="🎡"
+                title="Dekat Sejuta Wisata"
+                description="Akses mudah ke Jatim Park, Museum Angkut, Selecta, dan berbagai destinasi wisata hanya 5-15 menit berkendara."
+                gradient
+              />
+              <FeatureCard
+                icon="👨‍👩‍👧‍👦"
+                title="Lingkungan Keluarga"
+                description="Cluster aman dengan one gate system, CCTV 24 jam, dan area bermain anak. Sempurna untuk tumbuh kembang keluarga."
+              />
+              <FeatureCard
+                icon="🔒"
+                title="Keamanan Terjamin"
+                description="Sistem keamanan 24/7 dengan security profesional, CCTV di titik strategis, dan akses terkontrol."
+              />
+              <FeatureCard
+                icon="🏗️"
+                title="Kualitas Premium"
+                description="Material berkualitas tinggi, desain modern, dan finishing premium. Garansi struktur bangunan 10 tahun."
+                gradient
+              />
+              <FeatureCard
+                icon="📈"
+                title="Investasi Menguntungkan"
+                description="Potensi ROI tinggi dari sewa harian/bulanan. Apresiasi properti 15-20% per tahun di kawasan wisata Batu."
+              />
+            </div>
+          </div>
+        </section>
+        
+        {/* Funnel Section */}
+        <section className="section-padding bg-white">
+          <div className="container-custom">
+            <SectionTitle
+              badge="Cara Kerja"
+              title="Langkah Mudah Menuju Hunian Impian"
+              subtitle="Proses yang transparan dan mudah dari awareness hingga kepemilikan"
+            />
+            
+            <div className="mt-16 max-w-5xl mx-auto">
+              <div className="relative">
+                {/* Timeline Line */}
+                <div className="absolute left-1/2 transform -translate-x-1/2 w-1 h-full bg-gradient-to-b from-gold-600 via-gold-500 to-gold-400 hidden lg:block" />
+                
+                {/* Steps */}
+                <div className="space-y-12">
+                  {[
+                    {
+                      step: 1,
+                      title: "Awareness - Kenali The Shafa Residence",
+                      description: "Pelajari keunggulan lokasi, fasilitas, dan tipe rumah yang tersedia. Lihat foto, denah, dan spesifikasi lengkap.",
+                      icon: "👁️",
+                    },
+                    {
+                      step: 2,
+                      title: "Engagement - Kunjungi & Konsultasi",
+                      description: "Jadwalkan kunjungan lokasi, bertemu tim marketing, dan konsultasikan kebutuhan Anda. Kami siap membantu memilih tipe terbaik.",
+                      icon: "🤝",
+                    },
+                    {
+                      step: 3,
+                      title: "Conversion - Booking & Proses KPR",
+                      description: "Lakukan booking unit pilihan, urus proses KPR dengan bantuan kami, dan tunggu hunian impian Anda dibangun.",
+                      icon: "✅",
+                    },
+                    {
+                      step: 4,
+                      title: "Delight - Serah Terima & After Sales",
+                      description: "Terima kunci rumah Anda, nikmati hunian baru, dan dapatkan layanan after sales untuk kepuasan jangka panjang.",
+                      icon: "🔑",
+                    },
+                  ].map((item, index) => (
+                    <div key={item.step} className={`relative grid lg:grid-cols-2 gap-8 items-center ${index % 2 === 0 ? '' : 'lg:flex-row-reverse'}`}>
+                      {/* Content */}
+                      <div className={`${index % 2 === 0 ? 'lg:text-right lg:pr-12' : 'lg:col-start-2 lg:pl-12'}`}>
+                        <div className="inline-block px-4 py-2 bg-gold-100 rounded-full mb-4">
+                          <span className="text-gold-700 font-bold">Tahap {item.step}</span>
+                        </div>
+                        <h3 className="text-2xl font-bold text-navy-950 mb-3">{item.title}</h3>
+                        <p className="text-navy-700 leading-relaxed">{item.description}</p>
+                      </div>
+                      
+                      {/* Icon */}
+                      <div className={`flex justify-center ${index % 2 === 0 ? 'lg:col-start-2' : 'lg:col-start-1 lg:row-start-1'}`}>
+                        <div className="relative z-10 w-24 h-24 bg-gradient-to-br from-gold-600 to-gold-500 rounded-full flex items-center justify-center shadow-2xl ring-8 ring-white">
+                          <span className="text-4xl">{item.icon}</span>
+                        </div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+        
+        {/* Lokasi & Wisata Section */}
+        <section id="lokasi-wisata" className="section-padding bg-gradient-to-br from-navy-950 to-navy-900 text-white">
+          <div className="container-custom">
+            <SectionTitle
+              badge="Lokasi Strategis"
+              title={
+                <span className="text-white">
+                  Dekat dengan <span className="text-gold-400">10+ Destinasi Wisata</span>
+                </span>
+              }
+              subtitle={
+                <span className="text-navy-200">
+                  Akses mudah ke berbagai tempat wisata populer di Kota Batu hanya dalam hitungan menit
+                </span>
+              }
+            />
+            
+            <div className="mt-16">
+              <MapWithPins attractions={attractions} />
+            </div>
+            
+            <div className="mt-12 text-center">
+              <CTAButton 
+                message="Halo, saya ingin tahu lebih detail tentang lokasi The Shafa Residence dan akses ke wisata terdekat."
+                variant="primary"
+                size="lg"
+              >
+                Tanya Lokasi Detail
+              </CTAButton>
+            </div>
+          </div>
+        </section>
+        
+        {/* Tipe Rumah Preview Section */}
+        <section className="section-padding bg-white">
+          <div className="container-custom">
+            <SectionTitle
+              badge="Pilihan Tipe"
+              title="Temukan Tipe Rumah yang Tepat"
+              subtitle="Berbagai pilihan tipe dengan desain modern dan spesifikasi premium"
+            />
+            
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mt-16">
+              {featuredHouseTypes.map((houseType, index) => (
+                <HouseTypeCard 
+                  key={houseType.id} 
+                  houseType={houseType}
+                  featured={index === 1}
+                />
+              ))}
+            </div>
+            
+            <div className="text-center mt-12">
+              <Link
+                href="/house-types"
+                className="inline-flex items-center gap-2 px-8 py-4 bg-navy-950 hover:bg-navy-900 text-white font-semibold rounded-xl transition-all duration-300 transform hover:scale-105 shadow-lg border-2 border-gold-600"
+              >
+                Lihat Semua Tipe Rumah
+                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                </svg>
+              </Link>
+            </div>
+          </div>
+        </section>
+        
+        {/* Galeri Humanis Section */}
+        <section className="section-padding bg-navy-50">
+          <div className="container-custom">
+            <SectionTitle
+              badge="Kehidupan Keluarga"
+              title="Hunian untuk Momen Berharga"
+              subtitle="Ciptakan kenangan indah bersama keluarga di lingkungan yang nyaman dan aman"
+            />
+            
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mt-16">
+              {[
+                {
+                  image: "https://images.unsplash.com/photo-1511895426328-dc8714191300?w=600&h=400&fit=crop",
+                  title: "Keluarga Muda Bahagia",
+                  description: "Ruang tumbuh kembang anak yang ideal",
+                },
+                {
+                  image: "https://images.unsplash.com/photo-1609220136736-443140cffec6?w=600&h=400&fit=crop",
+                  title: "Momen Bersama Cucu",
+                  description: "Lansia menikmati masa pensiun dengan nyaman",
+                },
+                {
+                  image: "https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=600&h=400&fit=crop",
+                  title: "Quality Time Keluarga",
+                  description: "Lingkungan mendukung kedekatan keluarga",
+                },
+                {
+                  image: "https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?w=600&h=400&fit=crop",
+                  title: "Halaman Bermain",
+                  description: "Area luas untuk aktivitas outdoor",
+                },
+                {
+                  image: "https://images.unsplash.com/photo-1600573472550-8090b5e0745e?w=600&h=400&fit=crop",
+                  title: "Suasana Sejuk",
+                  description: "Udara pegunungan yang menyegarkan",
+                },
+                {
+                  image: "https://images.unsplash.com/photo-1600585154363-67eb9e2e2099?w=600&h=400&fit=crop",
+                  title: "View Spektakuler",
+                  description: "Pemandangan gunung dari teras rumah",
+                },
+              ].map((item, index) => (
+                <div key={index} className="group relative overflow-hidden rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2">
+                  <div className="relative h-72">
+                    <Image
+                      src={item.image}
+                      alt={item.title}
+                      fill
+                      className="object-cover transition-transform duration-500 group-hover:scale-110"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-navy-950/80 via-navy-950/40 to-transparent" />
+                  </div>
+                  <div className="absolute bottom-0 left-0 right-0 p-6 text-white">
+                    <h3 className="text-xl font-bold mb-2">{item.title}</h3>
+                    <p className="text-navy-100 text-sm">{item.description}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+        
+        {/* Testimoni Section */}
+        <section id="testimoni" className="section-padding bg-white">
+          <div className="container-custom">
+            <SectionTitle
+              badge="Kata Mereka"
+              title="Testimoni Penghuni & Investor"
+              subtitle="Kepercayaan dan kepuasan pelanggan adalah prioritas utama kami"
+            />
+            
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mt-16">
+              {featuredTestimonials.map((testimonial) => (
+                <TestimonialCard key={testimonial.id} testimonial={testimonial} />
+              ))}
+            </div>
+          </div>
+        </section>
+        
+        {/* FAQ Section */}
+        <section id="faq" className="section-padding bg-navy-50">
+          <div className="container-custom">
+            <SectionTitle
+              badge="Pertanyaan Umum"
+              title="FAQ - Frequently Asked Questions"
+              subtitle="Jawaban atas pertanyaan yang sering diajukan tentang The Shafa Residence"
+            />
+            
+            <div className="max-w-4xl mx-auto mt-16">
+              <FAQAccordion faqs={displayFaqs} />
+            </div>
+            
+            <div className="text-center mt-12 p-8 bg-gradient-to-r from-gold-600 to-gold-500 rounded-2xl">
+              <h3 className="text-2xl font-bold text-white mb-4">
+                Masih Ada Pertanyaan?
+              </h3>
+              <p className="text-white/90 mb-6 max-w-2xl mx-auto">
+                Tim kami siap membantu menjawab semua pertanyaan Anda. Hubungi kami sekarang!
+              </p>
+              <CTAButton 
+                message="Halo, saya punya beberapa pertanyaan tentang The Shafa Residence. Bisa dibantu?"
+                variant="secondary"
+                size="lg"
+              />
+            </div>
+          </div>
+        </section>
+        
+        {/* Final CTA Section */}
+        <section className="section-padding bg-gradient-to-br from-navy-950 to-navy-900 text-white">
+          <div className="container-custom text-center">
+            <div className="max-w-4xl mx-auto">
+              <PromoBadge 
+                text="Limited Time Offer"
+                variant="scarcity"
+                size="lg"
+                className="mb-8"
+              />
+              
+              <h2 className="text-4xl md:text-5xl font-bold mb-6">
+                Jangan Lewatkan Kesempatan Emas Ini!
+              </h2>
+              
+              <p className="text-xl text-navy-200 mb-8 leading-relaxed">
+                Hanya {siteConfig.scarcity.unitsLeft} unit tersisa dengan promo spesial {siteConfig.promo.headline}. 
+                Dapatkan hunian impian Anda sebelum terlambat!
+              </p>
+              
+              <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-8">
+                <CTAButton 
+                  message={`Halo, saya tertarik dengan promo ${siteConfig.promo.headline}. Bisa minta info detail dan jadwalkan survei lokasi?`}
+                  variant="primary"
+                  size="lg"
+                >
+                  Hubungi Sekarang
+                </CTAButton>
+                <Link
+                  href="/contact"
+                  className="inline-flex items-center gap-2 px-8 py-4 bg-white hover:bg-navy-50 text-navy-950 font-semibold rounded-xl transition-all duration-300 transform hover:scale-105"
+                >
+                  Formulir Kontak
+                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                  </svg>
+                </Link>
+              </div>
+              
+              <p className="text-sm text-gold-400 font-medium">
+                📞 {siteConfig.getDisplayPhone()} | 📧 {siteConfig.contact.email}
+              </p>
+            </div>
+          </div>
+        </section>
+      </main>
+      
+      <Footer />
+    </>
+  );
+}
