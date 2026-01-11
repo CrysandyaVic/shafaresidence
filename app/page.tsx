@@ -70,7 +70,7 @@ export default function HomePage() {
           {/* Background Image with Overlay */}
           <div className="absolute inset-0 z-0">
             <Image
-              src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=1920&h=1080&fit=crop"
+              src="/compressed_img/site-plan/7 SITE2.webp"
               alt="Perumahan kota batu dekat wisata dengan view gunung Panderman"
               fill
               className="object-cover"
