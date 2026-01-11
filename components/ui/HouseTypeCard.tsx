@@ -88,14 +88,14 @@ export default function HouseTypeCard({ houseType, featured = false }: HouseType
               <span className="text-gold-600">🛏️</span>
               <div>
                 <p className="text-xs text-navy-600">Kamar Tidur</p>
-                <p className="font-semibold text-navy-950">{houseType.specs.bedrooms} KT</p>
+                <p className="font-semibold text-navy-950">{houseType.specs.bedrooms}</p>
               </div>
             </div>
             <div className="flex items-center gap-2">
               <span className="text-gold-600">🚿</span>
               <div>
                 <p className="text-xs text-navy-600">Kamar Mandi</p>
-                <p className="font-semibold text-navy-950">{houseType.specs.bathrooms} KM</p>
+                <p className="font-semibold text-navy-950">{houseType.specs.bathrooms}</p>
               </div>
             </div>
           </div>

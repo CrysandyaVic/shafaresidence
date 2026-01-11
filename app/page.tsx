@@ -292,11 +292,66 @@ export default function HomePage() {
               }
             />
             
+            {/* Google Maps Embed */}
             <div className="mt-16">
-              <MapWithPins attractions={attractions} />
+              <div className="bg-white rounded-2xl overflow-hidden shadow-2xl">
+                <iframe
+                  src="https://www.google.com/maps/d/u/0/embed?mid=1jLfwhVwAaE5q_wQjV3S2d49ZUwDQ6Bc&ehbc=2E312F&noprof=1"
+                  width="100%"
+                  height="600"
+                  style={{ border: 0 }}
+                  allowFullScreen
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                  title="Wisata Dekat The Shafa Residence"
+                  className="w-full"
+                ></iframe>
+              </div>
+              <p className="text-center text-navy-300 mt-4 text-sm">
+                📍 Lokasi strategis dengan akses mudah ke berbagai destinasi wisata populer di Kota Batu
+              </p>
+            </div>
+            
+            {/* Wisata List */}
+            <div className="mt-16">
+              <h3 className="text-2xl md:text-3xl font-bold text-center mb-12 text-white">
+                Destinasi Wisata Terdekat
+              </h3>
+              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                {attractions.map((attraction) => (
+                  <div 
+                    key={attraction.id}
+                    className="bg-white/10 backdrop-blur-sm rounded-xl p-6 hover:bg-white/20 transition-all duration-300 border border-white/20"
+                  >
+                    <div className="flex items-start gap-4">
+                      <div className="text-4xl flex-shrink-0">{attraction.icon}</div>
+                      <div className="flex-1">
+                        <h4 className="text-lg font-bold text-white mb-2">{attraction.name}</h4>
+                        <p className="text-gold-400 text-sm font-semibold mb-2">
+                          {attraction.distance} • {attraction.estimatedTime}
+                        </p>
+                        <p className="text-navy-200 text-sm leading-relaxed">
+                          {attraction.description}
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
             </div>
             
             <div className="mt-12 flex flex-col sm:flex-row items-center justify-center gap-4">
+              <a
+                href="https://maps.app.goo.gl/SUG8cZaCf8vq1jw5A"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 px-8 py-4 bg-white hover:bg-navy-50 text-navy-950 font-semibold rounded-xl transition-all duration-300 transform hover:scale-105 min-h-[44px] shadow-lg"
+              >
+                <svg className="w-5 h-5 text-red-600" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+                </svg>
+                Lihat di Google Maps
+              </a>
               <CTAButton 
                 message="Halo, saya ingin tahu lebih detail tentang lokasi The Shafa Residence dan akses ke wisata terdekat."
                 variant="primary"
@@ -435,8 +490,95 @@ export default function HomePage() {
           </div>
         </section>
         
+        {/* Fasilitas Umum & Gate Section */}
+        <section className="section-padding bg-white">
+          <div className="container-custom">
+            <SectionTitle
+              badge="Fasilitas"
+              title="Fasilitas Umum & Keamanan"
+              subtitle="Nikmati berbagai fasilitas dan keamanan 24 jam untuk kenyamanan keluarga Anda"
+            />
+            
+            {/* Gate/Security Section */}
+            <div className="mt-16">
+              <h3 className="text-2xl md:text-3xl font-bold text-navy-950 mb-8 text-center">
+                🔒 Keamanan 24 Jam dengan One Gate System
+              </h3>
+              <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                {[
+                  { src: "/compressed_img/gate/5 GATE1.webp", alt: "Gate utama The Shafa Residence" },
+                  { src: "/compressed_img/gate/5 GATE2.webp", alt: "Sistem keamanan 24 jam" },
+                  { src: "/compressed_img/gate/5 GATE3.webp", alt: "Akses masuk cluster eksklusif" },
+                  { src: "/compressed_img/gate/5 GATE4.webp", alt: "Pos keamanan perumahan" },
+                ].map((item, index) => (
+                  <div key={index} className="group relative overflow-hidden rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2">
+                    <div className="relative h-64">
+                      <Image
+                        src={item.src}
+                        alt={item.alt}
+                        fill
+                        className="object-cover transition-transform duration-500 group-hover:scale-110"
+                        loading="lazy"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-navy-950/60 to-transparent" />
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+            
+            {/* Playground/Fasum Section */}
+            <div className="mt-20">
+              <h3 className="text-2xl md:text-3xl font-bold text-navy-950 mb-8 text-center">
+                🎪 Playground & Area Bermain Anak
+              </h3>
+              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                {[
+                  { src: "/compressed_img/fasum/4 PLAYGROUND1.webp", alt: "Playground anak di The Shafa Residence" },
+                  { src: "/compressed_img/fasum/4 PLAYGROUND2.webp", alt: "Area bermain outdoor yang aman" },
+                  { src: "/compressed_img/fasum/4 PLAYGROUND3.webp", alt: "Taman bermain dengan perosotan" },
+                  { src: "/compressed_img/fasum/4 PLAYGROUND4.webp", alt: "Fasilitas playground lengkap" },
+                  { src: "/compressed_img/fasum/1655478418138.webp", alt: "Fasilitas umum perumahan" },
+                  { src: "/compressed_img/fasum/1655478418148.webp", alt: "Area taman dan fasum" },
+                ].map((item, index) => (
+                  <div key={index} className="group relative overflow-hidden rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2">
+                    <div className="relative h-64">
+                      <Image
+                        src={item.src}
+                        alt={item.alt}
+                        fill
+                        className="object-cover transition-transform duration-500 group-hover:scale-110"
+                        loading="lazy"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-navy-950/60 to-transparent" />
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+            
+            <div className="mt-12 text-center">
+              <div className="bg-gradient-to-r from-navy-950 to-navy-900 rounded-2xl p-8 max-w-3xl mx-auto">
+                <h3 className="text-2xl md:text-3xl font-bold text-white mb-4">
+                  Fasilitas Lengkap untuk Keluarga
+                </h3>
+                <p className="text-navy-200 mb-6">
+                  Dengan keamanan 24 jam dan fasilitas playground, The Shafa Residence adalah pilihan tepat untuk keluarga yang mengutamakan kenyamanan dan keamanan.
+                </p>
+                <CTAButton 
+                  message="Halo, saya tertarik dengan fasilitas di The Shafa Residence. Bisa info lebih detail?"
+                  variant="primary"
+                  size="lg"
+                >
+                  Tanya Fasilitas Lainnya
+                </CTAButton>
+              </div>
+            </div>
+          </div>
+        </section>
+        
         {/* Testimoni Section */}
-        <section id="testimoni" className="section-padding bg-white">
+        <section id="testimoni" className="section-padding bg-navy-50">
           <div className="container-custom">
             <SectionTitle
               badge="Kata Mereka"

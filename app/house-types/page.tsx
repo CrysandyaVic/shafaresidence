@@ -27,38 +27,6 @@ export default function HouseTypesPage() {
           </div>
         </section>
         
-        {/* Filter Section - Simple */}
-        <section className="py-8 bg-white border-b-2 border-navy-100">
-          <div className="container-custom">
-            <div className="flex flex-wrap items-center gap-4">
-              <div className="flex items-center gap-2">
-                <svg className="w-5 h-5 text-navy-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2.586a1 1 0 01-.293.707l-6.414 6.414a1 1 0 00-.293.707V17l-4 4v-6.586a1 1 0 00-.293-.707L3.293 7.293A1 1 0 013 6.586V4z" />
-                </svg>
-                <span className="text-navy-700 font-medium">Filter:</span>
-              </div>
-              
-              <div className="flex flex-wrap gap-2">
-                <button className="px-4 py-2 bg-gold-600 text-white rounded-lg font-medium transition-all duration-300">
-                  Semua Tipe
-                </button>
-                <button className="px-4 py-2 bg-navy-50 hover:bg-gold-50 text-navy-700 hover:text-gold-700 rounded-lg font-medium transition-all duration-300">
-                  3 Kamar
-                </button>
-                <button className="px-4 py-2 bg-navy-50 hover:bg-gold-50 text-navy-700 hover:text-gold-700 rounded-lg font-medium transition-all duration-300">
-                  4 Kamar
-                </button>
-                <button className="px-4 py-2 bg-navy-50 hover:bg-gold-50 text-navy-700 hover:text-gold-700 rounded-lg font-medium transition-all duration-300">
-                  5+ Kamar
-                </button>
-                <button className="px-4 py-2 bg-navy-50 hover:bg-gold-50 text-navy-700 hover:text-gold-700 rounded-lg font-medium transition-all duration-300">
-                  Ada Promo
-                </button>
-              </div>
-            </div>
-          </div>
-        </section>
-        
         {/* House Types Grid */}
         <section className="section-padding bg-navy-50">
           <div className="container-custom">

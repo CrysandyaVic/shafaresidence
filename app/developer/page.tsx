@@ -8,7 +8,7 @@ import { developerProfile } from '@/data/developerProfile';
 
 export const metadata: Metadata = {
   title: 'Tentang Developer - The Shafa Residence',
-  description: 'PT Shafa Properti Indonesia - Developer properti terpercaya dengan pengalaman membangun hunian berkualitas di kawasan strategis',
+  description: 'Ridhana Group - Developer properti terpercaya dengan pengalaman membangun hunian berkualitas di kawasan strategis',
 };
 
 export default function DeveloperPage() {
@@ -20,6 +20,15 @@ export default function DeveloperPage() {
         {/* Hero Section */}
         <section className="section-padding bg-gradient-to-br from-navy-950 to-navy-900 text-white">
           <div className="container-custom text-center">
+            {/* Logo */}
+            <div className="flex justify-center mb-8">
+              <img 
+                src="/compressed_img/logo/Logo Ridhana.svg" 
+                alt="Ridhana Group Logo"
+                className="h-24 w-auto"
+              />
+            </div>
+            
             <SectionTitle
               badge="Tentang Kami"
               title={<span className="text-white">{developerProfile.name}</span>}
@@ -210,35 +219,6 @@ export default function DeveloperPage() {
                       <p className="text-xs text-gold-600 font-medium mt-2">Tanggal: {doc.issuedDate}</p>
                     </div>
                   </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-        
-        {/* Team */}
-        <section className="section-padding bg-white">
-          <div className="container-custom">
-            <SectionTitle
-              badge="Tim Kami"
-              title="Profesional Berpengalaman"
-              subtitle="Didukung oleh tim ahli di bidangnya untuk memastikan kualitas terbaik"
-            />
-            
-            <div className="grid md:grid-cols-3 gap-8 mt-16 max-w-5xl mx-auto">
-              {developerProfile.team.map((member, index) => (
-                <div key={index} className="group text-center">
-                  <div className="relative w-48 h-48 mx-auto mb-6 rounded-full overflow-hidden ring-4 ring-gold-400 group-hover:ring-8 transition-all duration-300">
-                    <Image
-                      src={member.image}
-                      alt={member.name}
-                      fill
-                      className="object-cover group-hover:scale-110 transition-transform duration-500"
-                    />
-                  </div>
-                  <h4 className="text-xl font-bold text-navy-950 mb-2">{member.name}</h4>
-                  <p className="text-gold-600 font-semibold mb-3">{member.position}</p>
-                  <p className="text-navy-700 text-sm leading-relaxed">{member.description}</p>
                 </div>
               ))}
             </div>

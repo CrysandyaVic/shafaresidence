@@ -6,6 +6,7 @@ import Image from 'next/image';
 interface ImageGalleryProps {
   render3D: string[];
   floorPlan: string;
+  gallery: string[];
   name: string;
   promo?: {
     badge: string;
@@ -19,20 +20,25 @@ interface ImageGalleryProps {
   };
 }
 
-export default function ImageGallery({ render3D, floorPlan, name, promo, scarcity }: ImageGalleryProps) {
-  const [activeTab, setActiveTab] = useState<'render' | 'floorplan'>('render');
+export default function ImageGallery({ render3D, floorPlan, gallery, name, promo, scarcity }: ImageGalleryProps) {
+  const [activeTab, setActiveTab] = useState<'render' | 'floorplan' | 'gallery'>('render');
   const [activeImageIndex, setActiveImageIndex] = useState(0);
+  
+  // Combine all render images
+  const allImages = activeTab === 'render' ? render3D : activeTab === 'gallery' ? gallery : [floorPlan];
   
   return (
     <div>
       {/* Main Image/Tab Content */}
       <div className="relative mb-6">
-        <div className="relative h-[500px] rounded-2xl overflow-hidden">
+        <div className={`relative h-[500px] rounded-2xl overflow-hidden ${
+          activeTab === 'floorplan' ? 'bg-white' : ''
+        }`}>
           <Image
-            src={activeTab === 'render' ? render3D[activeImageIndex] : floorPlan}
-            alt={`${name} - ${activeTab === 'render' ? '3D Render' : 'Denah'}`}
+            src={allImages[activeImageIndex]}
+            alt={`${name} - ${activeTab === 'render' ? '3D Render' : activeTab === 'gallery' ? 'Gallery' : 'Denah'}`}
             fill
-            className="object-cover"
+            className={activeTab === 'floorplan' ? 'object-contain' : 'object-cover'}
           />
         </div>
         
@@ -54,33 +60,43 @@ export default function ImageGallery({ render3D, floorPlan, name, promo, scarcit
       </div>
       
       {/* Tab Navigation */}
-      <div className="flex gap-4 mb-6">
+      <div className="flex gap-3 mb-6">
         <button
-          onClick={() => setActiveTab('render')}
-          className={`flex-1 py-3 px-6 rounded-xl font-semibold transition-all duration-300 ${
+          onClick={() => { setActiveTab('render'); setActiveImageIndex(0); }}
+          className={`flex-1 py-3 px-4 rounded-xl font-semibold transition-all duration-300 ${
             activeTab === 'render'
               ? 'bg-gradient-to-r from-gold-600 to-gold-500 text-white shadow-lg'
               : 'bg-navy-50 text-navy-700 hover:bg-gold-50'
           }`}
         >
-          3D Render
+          Eksterior
         </button>
         <button
-          onClick={() => setActiveTab('floorplan')}
-          className={`flex-1 py-3 px-6 rounded-xl font-semibold transition-all duration-300 ${
+          onClick={() => { setActiveTab('gallery'); setActiveImageIndex(0); }}
+          className={`flex-1 py-3 px-4 rounded-xl font-semibold transition-all duration-300 ${
+            activeTab === 'gallery'
+              ? 'bg-gradient-to-r from-gold-600 to-gold-500 text-white shadow-lg'
+              : 'bg-navy-50 text-navy-700 hover:bg-gold-50'
+          }`}
+        >
+          Interior
+        </button>
+        <button
+          onClick={() => { setActiveTab('floorplan'); setActiveImageIndex(0); }}
+          className={`flex-1 py-3 px-4 rounded-xl font-semibold transition-all duration-300 ${
             activeTab === 'floorplan'
               ? 'bg-gradient-to-r from-gold-600 to-gold-500 text-white shadow-lg'
               : 'bg-navy-50 text-navy-700 hover:bg-gold-50'
           }`}
         >
-          Denah Rumah
+          Denah
         </button>
       </div>
       
-      {/* Thumbnail Gallery (only for renders) */}
-      {activeTab === 'render' && (
+      {/* Thumbnail Gallery */}
+      {activeTab !== 'floorplan' && (
         <div className="grid grid-cols-4 gap-4">
-          {render3D.map((img, index) => (
+          {allImages.map((img, index) => (
             <button
               key={index}
               onClick={() => setActiveImageIndex(index)}

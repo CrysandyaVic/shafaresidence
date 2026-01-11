@@ -51,10 +51,10 @@ export interface DeveloperProfile {
 }
 
 export const developerProfile: DeveloperProfile = {
-  name: "PT Shafa Properti Indonesia",
+  name: "Ridhana Group",
   tagline: "Membangun Hunian, Mewujudkan Impian",
   establishedYear: 2015,
-  description: "PT Shafa Properti Indonesia adalah developer properti terpercaya dengan fokus pada pengembangan hunian berkualitas di kawasan wisata dan strategis. Kami berkomitmen menghadirkan hunian yang tidak hanya nyaman, tetapi juga memiliki nilai investasi jangka panjang.",
+  description: "Ridhana Group adalah developer properti terpercaya dengan fokus pada pengembangan hunian berkualitas di kawasan wisata dan strategis. Kami berkomitmen menghadirkan hunian yang tidak hanya nyaman, tetapi juga memiliki nilai investasi jangka panjang.",
   
   vision: "Menjadi developer properti terkemuka yang menghadirkan hunian berkualitas premium dengan konsep modern dan ramah lingkungan di kawasan strategis Indonesia.",
   

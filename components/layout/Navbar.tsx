@@ -19,18 +19,16 @@ export default function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-md shadow-md">
+    <nav className="fixed top-0 left-0 right-0 z-50 bg-navy-950 shadow-md">
       <div className="container-custom">
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
-          <Link href="/" className="flex items-center gap-3 group">
-            <div className="w-12 h-12 bg-gradient-to-br from-navy-900 to-navy-800 rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-              <span className="text-2xl">🏡</span>
-            </div>
-            <div className="hidden sm:block">
-              <h1 className="text-lg font-bold text-navy-950">{siteConfig.name}</h1>
-              <p className="text-xs text-gold-600 font-medium">{siteConfig.tagline}</p>
-            </div>
+          <Link href="/" className="flex items-center gap-3 group bg-navy-900 px-4 py-2 rounded-lg">
+            <img 
+              src="/compressed_img/logo/LOGO HORIZONTAL.svg" 
+              alt={siteConfig.name}
+              className="h-12 w-auto group-hover:scale-105 transition-transform duration-300"
+            />
           </Link>
           
           {/* Desktop Navigation */}
@@ -39,7 +37,7 @@ export default function Navbar() {
               <Link
                 key={item.href}
                 href={item.href}
-                className="px-4 py-2 text-sm font-medium text-navy-700 hover:text-gold-600 hover:bg-gold-50 rounded-lg transition-all duration-300"
+                className="px-4 py-2 text-sm font-medium text-white hover:text-gold-400 hover:bg-navy-900 rounded-lg transition-all duration-300"
               >
                 {item.label}
               </Link>
@@ -64,7 +62,7 @@ export default function Navbar() {
           {/* Mobile Menu Button */}
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="lg:hidden p-2 text-navy-900 hover:bg-gold-50 rounded-lg transition-colors duration-300"
+            className="lg:hidden p-2 text-white hover:bg-navy-900 rounded-lg transition-colors duration-300"
             aria-label="Toggle menu"
           >
             <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">

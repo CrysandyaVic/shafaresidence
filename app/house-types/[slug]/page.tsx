@@ -50,6 +50,7 @@ export default async function HouseTypeDetailPage({ params }: { params: Promise<
                 <ImageGallery 
                   render3D={houseType.images.render3D}
                   floorPlan={houseType.images.floorPlan}
+                  gallery={houseType.images.gallery}
                   name={houseType.name}
                   promo={houseType.promo}
                   scarcity={houseType.scarcity}

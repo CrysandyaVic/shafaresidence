@@ -25,9 +25,22 @@ export interface HouseType {
     bedrooms: number; // KT
     bathrooms: number; // KM
     carport: number;
-    floors: number;
-    electricity: string; // e.g., "2200 Watt"
-    waterSource: string; // e.g., "PDAM + Sumur Bor"
+    floors: string; // e.g., "2 Lantai", "2 Lantai + Rooftop"
+    electricity: string; // e.g., "1300 Watt"
+    waterSource: string; // e.g., "PDAM / PAM"
+  };
+  
+  // Technical Specifications (Common for all types)
+  technicalSpecs: {
+    foundation: string;
+    wall: string;
+    roof: string;
+    roofFrame: string;
+    ceiling: string;
+    flooring: string;
+    sanitary: string;
+    doorFrame: string;
+    doorWindow: string;
   };
   
   // Features
@@ -48,12 +61,25 @@ export interface HouseType {
   };
 }
 
+// Common technical specifications for all house types
+export const commonTechnicalSpecs = {
+  foundation: "Batu Kali & Beton Bertulang",
+  wall: "Bata Ringan, Plester & Aci",
+  roof: "Genteng Beton",
+  roofFrame: "Baja Ringan",
+  ceiling: "Metal Puring & Gypsum",
+  flooring: "Granit 60x60",
+  sanitary: "Monoblok, Shower",
+  doorFrame: "Aluminium",
+  doorWindow: "Pintu Engineering",
+};
+
 export const houseTypes: HouseType[] = [
   {
     id: "1",
-    slug: "tipe-emerald",
-    name: "Tipe Emerald",
-    tagline: "Hunian Ideal Keluarga Muda",
+    slug: "tipe-austine",
+    name: "Type Austine",
+    tagline: "Hunian Eksklusif 2 Lantai + Rooftop",
     priceFrom: 850000000,
     priceFormatted: "Rp 850 Juta",
     
@@ -70,57 +96,61 @@ export const houseTypes: HouseType[] = [
     },
     
     specs: {
-      landArea: 120,
+      landArea: 68,
       buildingArea: 70,
       bedrooms: 3,
       bathrooms: 2,
       carport: 1,
-      floors: 2,
-      electricity: "2200 Watt",
-      waterSource: "PDAM + Sumur Bor",
+      floors: "2 Lantai + Rooftop",
+      electricity: "1300 Watt",
+      waterSource: "PDAM / PAM",
     },
     
+    technicalSpecs: commonTechnicalSpecs,
+    
     features: [
+      "3 Kamar Tidur Lapang",
+      "2 Kamar Mandi",
+      "Rooftop Siap Pakai",
       "View Gunung Panderman",
-      "Row Jalan 6 Meter",
       "Cluster Eksklusif",
-      "One Gate System",
-      "CCTV 24 Jam",
       "Dekat Wisata (5-10 Menit)",
     ],
     
     suitableFor: [
       {
         category: "Keluarga Muda",
-        description: "Ideal untuk pasangan muda dengan 1-2 anak, ruang cukup untuk tumbuh kembang keluarga.",
+        description: "Ideal untuk keluarga muda dengan 1-2 anak, lengkap dengan rooftop untuk area santai keluarga.",
       },
       {
         category: "Investasi",
-        description: "Lokasi strategis dekat wisata menjadikan properti ini memiliki nilai investasi tinggi.",
+        description: "Lokasi strategis dekat wisata dengan potensi apresiasi tinggi.",
       },
     ],
     
     images: {
-      hero: "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=1200&h=800&fit=crop",
+      hero: "/compressed_img/austine/aus2.webp",
       render3D: [
-        "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800&h=600&fit=crop",
-        "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=800&h=600&fit=crop",
+        "/compressed_img/austine/aus2.webp",
       ],
-      floorPlan: "https://images.unsplash.com/photo-1503174971373-b1f69850bded?w=800&h=600&fit=crop",
+      floorPlan: "/compressed_img/austine/denah austine.webp",
       gallery: [
-        "https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?w=600&h=400&fit=crop",
-        "https://images.unsplash.com/photo-1600573472550-8090b5e0745e?w=600&h=400&fit=crop",
-        "https://images.unsplash.com/photo-1600607687644-c7171b42498f?w=600&h=400&fit=crop",
-        "https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?w=600&h=400&fit=crop",
+        "/compressed_img/austine/Interior Austine 001.webp",
+        "/compressed_img/austine/Interior Austine 002.webp",
+        "/compressed_img/austine/Interior Austine 003.webp",
+        "/compressed_img/austine/Interior Austine 004.webp",
+        "/compressed_img/austine/Interior Austine 005.webp",
+        "/compressed_img/austine/Interior Austine 006.webp",
+        "/compressed_img/austine/Interior Austine 007.webp",
       ],
     },
   },
   
   {
     id: "2",
-    slug: "tipe-sapphire",
-    name: "Tipe Sapphire",
-    tagline: "Ruang Lebih Luas untuk Keluarga Berkembang",
+    slug: "tipe-barryl",
+    name: "Type Barryl",
+    tagline: "Rumah 2 Lantai Nyaman untuk Keluarga",
     priceFrom: 1200000000,
     priceFormatted: "Rp 1.2 Miliar",
     
@@ -137,57 +167,65 @@ export const houseTypes: HouseType[] = [
     },
     
     specs: {
-      landArea: 150,
-      buildingArea: 95,
-      bedrooms: 4,
-      bathrooms: 3,
-      carport: 2,
-      floors: 2,
-      electricity: "3500 Watt",
-      waterSource: "PDAM + Sumur Bor",
+      landArea: 60,
+      buildingArea: 63,
+      bedrooms: 3,
+      bathrooms: 2,
+      carport: 1,
+      floors: "2 Lantai",
+      electricity: "1300 Watt",
+      waterSource: "PDAM / PAM",
     },
     
+    technicalSpecs: commonTechnicalSpecs,
+    
     features: [
-      "View Gunung Arjuno & Panderman",
-      "Rooftop Garden Ready",
-      "Smart Home Ready",
-      "Row Jalan 8 Meter",
-      "Private Garden",
-      "Walking Distance ke Wisata",
+      "3 Kamar Tidur",
+      "2 Kamar Mandi",
+      "Desain 2 Lantai Efisien",
+      "View Gunung Panderman",
+      "One Gate System",
+      "Dekat Wisata & Fasilitas Umum",
     ],
     
     suitableFor: [
       {
         category: "Keluarga Berkembang",
-        description: "Cocok untuk keluarga dengan 2-3 anak, dilengkapi ruang tambahan untuk ruang bermain atau home office.",
+        description: "Cocok untuk keluarga dengan 1-2 anak yang membutuhkan ruang nyaman dan efisien.",
       },
       {
-        category: "Pensiunan Aktif",
-        description: "Lingkungan sejuk dan tenang, ideal untuk menikmati masa pensiun dengan akses mudah ke berbagai destinasi.",
+        category: "First Home Buyer",
+        description: "Pilihan tepat untuk pembeli rumah pertama dengan desain fungsional dan harga terjangkau.",
       },
     ],
     
     images: {
-      hero: "https://images.unsplash.com/photo-1600585154526-990dced4db0d?w=1200&h=800&fit=crop",
+      hero: "/compressed_img/barly/bar2.webp",
       render3D: [
-        "https://images.unsplash.com/photo-1600585154363-67eb9e2e2099?w=800&h=600&fit=crop",
-        "https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?w=800&h=600&fit=crop",
+        "/compressed_img/barly/bar2.webp",
+        "/compressed_img/barly/1 BARLY HOOK1.webp",
+        "/compressed_img/barly/1 BARLY HOOK2.webp",
+        "/compressed_img/barly/3 TIPE BARLY1.webp",
+        "/compressed_img/barly/3 TIPE BARLY2.webp",
       ],
-      floorPlan: "https://images.unsplash.com/photo-1509643492803-0e4276f49061?w=800&h=600&fit=crop",
+      floorPlan: "/compressed_img/barly/denah barryl.webp",
       gallery: [
-        "https://images.unsplash.com/photo-1600566753229-f7b0c0b1e5b5?w=600&h=400&fit=crop",
-        "https://images.unsplash.com/photo-1600573472591-ee6b68d14711?w=600&h=400&fit=crop",
-        "https://images.unsplash.com/photo-1600047509807-ba8f99d2cdde?w=600&h=400&fit=crop",
-        "https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?w=600&h=400&fit=crop",
+        "/compressed_img/barly/Interior Barryl 001.webp",
+        "/compressed_img/barly/Interior Barryl 002.webp",
+        "/compressed_img/barly/Interior Barryl 003.webp",
+        "/compressed_img/barly/Interior Barryl 004.webp",
+        "/compressed_img/barly/Interior Barryl 005.webp",
+        "/compressed_img/barly/Interior Barryl 006.webp",
+        "/compressed_img/barly/Interior Barryl 007.webp",
       ],
     },
   },
   
   {
     id: "3",
-    slug: "tipe-diamond",
-    name: "Tipe Diamond",
-    tagline: "Premium Living dengan View Terbaik",
+    slug: "tipe-charlotte",
+    name: "Type Charlotte",
+    tagline: "Rumah Mezzanine Modern & Kompak",
     priceFrom: 1850000000,
     priceFormatted: "Rp 1.85 Miliar",
     
@@ -204,53 +242,63 @@ export const houseTypes: HouseType[] = [
     },
     
     specs: {
-      landArea: 200,
-      buildingArea: 140,
-      bedrooms: 5,
-      bathrooms: 4,
-      carport: 2,
-      floors: 2,
-      electricity: "5500 Watt",
-      waterSource: "PDAM + Sumur Bor + Penampungan Air",
+      landArea: 60,
+      buildingArea: 45,
+      bedrooms: 2,
+      bathrooms: 2,
+      carport: 1,
+      floors: "2 Lantai (Mezzanine)",
+      electricity: "1300 Watt",
+      waterSource: "PDAM / PAM",
     },
     
+    technicalSpecs: commonTechnicalSpecs,
+    
     features: [
-      "360° Mountain & City View",
-      "Rooftop Lounge",
-      "Smart Home System",
-      "Private Pool Ready",
-      "Home Theater Ready",
-      "Premium Finishing",
-      "Hook Location",
+      "2 Kamar Tidur",
+      "2 Kamar Mandi",
+      "Desain Mezzanine Unik",
+      "Ruang Efisien & Fungsional",
+      "View Gunung Panderman",
+      "Lokasi Strategis",
     ],
     
     suitableFor: [
       {
-        category: "Keluarga Besar",
-        description: "Sempurna untuk keluarga besar atau multigenerasi dengan kamar tamu dan ruang entertainment lengkap.",
+        category: "Pasangan Muda",
+        description: "Ideal untuk pasangan baru menikah atau keluarga kecil dengan desain kompak namun modern.",
       },
       {
-        category: "Executive Family",
-        description: "Hunian premium dengan fasilitas lengkap untuk keluarga eksekutif yang menghargai kualitas dan privasi.",
+        category: "Investasi Villa",
+        description: "Cocok untuk investasi villa wisata dengan konsep mezzanine yang menarik dan dekat destinasi wisata.",
       },
       {
-        category: "Investasi Premium",
-        description: "Properti eksklusif dengan potensi apresiasi tinggi di kawasan wisata berkembang.",
+        category: "Minimalist Living",
+        description: "Sempurna bagi yang menginginkan gaya hidup minimalis dengan ruang yang efisien.",
       },
     ],
     
     images: {
-      hero: "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=1200&h=800&fit=crop",
+      hero: "/compressed_img/charlotte/CHAR.webp",
       render3D: [
-        "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800&h=600&fit=crop",
-        "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=800&h=600&fit=crop",
+        "/compressed_img/charlotte/CHAR.webp",
+        "/compressed_img/charlotte/charloote.webp",
+        "/compressed_img/charlotte/charrr.webp",
+        "/compressed_img/charlotte/1 CHARLOTTE HOOK1.webp",
+        "/compressed_img/charlotte/1 CHARLOTTE HOOK2.webp",
+        "/compressed_img/charlotte/2 CHARLOTTE1.webp",
+        "/compressed_img/charlotte/2 CHARLOTTE2.webp",
+        "/compressed_img/charlotte/2 CHARLOTTE3.webp",
       ],
-      floorPlan: "https://images.unsplash.com/photo-1503174971373-b1f69850bded?w=800&h=600&fit=crop",
+      floorPlan: "/compressed_img/charlotte/denah charlotte.webp",
       gallery: [
-        "https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?w=600&h=400&fit=crop",
-        "https://images.unsplash.com/photo-1600573472550-8090b5e0745e?w=600&h=400&fit=crop",
-        "https://images.unsplash.com/photo-1600607687644-c7171b42498f?w=600&h=400&fit=crop",
-        "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=600&h=400&fit=crop",
+        "/compressed_img/charlotte/Interior Charlotte 001.webp",
+        "/compressed_img/charlotte/Interior Charlotte 002.webp",
+        "/compressed_img/charlotte/Interior Charlotte 003.webp",
+        "/compressed_img/charlotte/Interior Charlotte 004.webp",
+        "/compressed_img/charlotte/Interior Charlotte 005.webp",
+        "/compressed_img/charlotte/Interior Charlotte 006.webp",
+        "/compressed_img/charlotte/Interior Charlotte 007.webp",
       ],
     },
   },
